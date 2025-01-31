@@ -3,7 +3,7 @@ In Node.js, the **`os` module** (short for "Operating System") is a **built-in c
 ---
 
 ### **Key Features of the `os` Module**
-Here’s a breakdown of the most useful methods and properties:
+Here’s a breakdown of the most useful methods and properties
 
 | **Method/Property**       | **Description**                                                                 | **Example**                          |
 |---------------------------|---------------------------------------------------------------------------------|--------------------------------------|
@@ -23,49 +23,4 @@ Here’s a breakdown of the most useful methods and properties:
 
 ---
 
-### **Example Usage**
-```javascript
-const os = require('os');
 
-// Get OS platform
-console.log('Platform:', os.platform()); // e.g., 'linux'
-
-// Get total and free memory (in GB)
-const totalMemGB = (os.totalmem() / 1024 ** 3).toFixed(2);
-const freeMemGB = (os.freemem() / 1024 ** 3).toFixed(2);
-console.log(`Memory: ${freeMemGB} GB free / ${totalMemGB} GB total`);
-
-// Get CPU info
-console.log('CPU Cores:', os.cpus().length);
-console.log('CPU Model:', os.cpus()[0].model);
-
-// Get network interfaces
-const network = os.networkInterfaces();
-console.log('IP Address:', network.eth0?.[0]?.address); // IPv4 address
-```
-
----
-
-### **Common Use Cases**
-1. **System Monitoring**:  
-   Check memory usage, CPU load, or uptime for health monitoring.
-2. **Platform-Specific Logic**:  
-   Adjust file paths or behavior based on the OS (e.g., `os.platform()`).
-3. **Resource Management**:  
-   Optimize app performance based on available memory/CPU.
-4. **User Info**:  
-   Retrieve the current user’s home directory (`os.homedir()`).
-
----
-
-### **Notes**
-- **Permissions**: Some methods (e.g., `os.networkInterfaces()`) may require elevated privileges.
-- **Memory Values**: `os.freemem()` and `os.totalmem()` return values in bytes. Convert to GB/MB as needed.
-- **OS-Specific Behavior**: Use `os.EOL` to handle line endings correctly in files.
-
----
-
-### **Learn More**
-- Official Node.js `os` Module Docs: [https://nodejs.org/api/os.html](https://nodejs.org/api/os.html)
-
-Need help with a specific scenario? Let me know! 😊
