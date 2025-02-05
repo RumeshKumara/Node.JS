@@ -1,9 +1,11 @@
 import {fileURLToPath} from 'node:url';
 import {dirname, join} from 'node:path';
-import { readFile } from 'node:fs';
+import { readFile } from 'node:fs/promises';
 import { writeFile } from 'node:fs/promises';
 import { appendFile } from 'node:fs/promises';
 import { rm } from 'node:fs/promises';
+import { isUtf8 } from 'node:buffer';
+
 
 // If createRequire is not used, remove the import statement
 // Otherwise, ensure it is used correctly in the code
@@ -69,4 +71,9 @@ rm(join(__dirname, 'write.js'), (err) => {
     if (!err){
     console.log('File deleted');
     }
+});
+
+readFile(join(__dirname, 'read.txt'), {}).then((data) => {
+    console.log(data.toString(isUtf8));
+    // Check if the file content is UTF-8 encoded.
 });
